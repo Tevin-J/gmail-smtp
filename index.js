@@ -30,8 +30,10 @@ app.get('/', function (req, res) {
 })
 /*настраиваем запрос и реквест*/
 app.post(`/sendMessage`, async function (req, res) {
+    console.log()
     let {name, email, message} = req.body
-    transporter.sendMail({
+    console.log(message)
+    await transporter.sendMail({
         from: 'anton.revta@gmail.com',
         to: 'nety_sovesty@mail.ru',
         subject: 'hr wants me',
