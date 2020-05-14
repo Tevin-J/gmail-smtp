@@ -30,16 +30,20 @@ app.get('/', function (req, res) {
 })
 /*настраиваем запрос и реквест*/
 app.post(`/sendMessage`, async function (req, res) {
-    console.log()
-    let {name, email, message} = req.body
-    console.log(message)
-    await transporter.sendMail({
-        from: 'anton.revta@gmail.com',
-        to: 'nety_sovesty@mail.ru',
-        subject: 'hr wants me',
-        html: `<b>Привет!</b><div>${name}</div><div>${email}</div><div>${message}</div>`
-    })
-    res.send('Hello world')
+    try {
+        console.log()
+        let {name, email, message} = req.body
+        console.log(message)
+        await transporter.sendMail({
+            from: 'anton.revta@gmail.com',
+            to: 'nety_sovesty@mail.ru',
+            subject: 'hr wants me',
+            html: `<b>Привет!</b><div>${name}</div><div>${email}</div><div>${message}</div>`
+        })
+        res.send('Hello world')
+    } catch (e) {
+        res.send(e)
+    }
 })
 let port = process.env.PORT || 3010
 /*здесь мы стартуем наше app*/
