@@ -31,12 +31,13 @@ app.get('/', function (req, res) {
 /*настраиваем запрос и реквест*/
 app.post(`/sendMessage`, async function (req, res) {
     let {name, email, message} = req.body
-    let info = await transporter.sendMail({
+    transporter.sendMail({
         from: 'HR',
         to: 'anton.revta@gmail.com',
         subject: 'hr wants me',
         html: `<b>Привет!</b><div>${name}</div><div>${email}</div><div>${message}</div>`
     })
+    res.send('Hello world')
 })
 let port = process.env.PORT || 3010
 /*здесь мы стартуем наше app*/
