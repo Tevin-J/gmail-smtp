@@ -20,8 +20,8 @@ let smtp_password = 't8e3v8i4n6.1j5'
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: smtp_login, // generated ethereal user
-        pass: smtp_password, // generated ethereal password
+        user: 'anton.revta@gmail.com', // generated ethereal user
+        pass: 't8e3v8i4n6.1j5', // generated ethereal password
     },
 });
 /*настраиваем роутер. если нам на корень сайта / придет get запрос, мы вернем hello world*/
