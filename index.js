@@ -32,8 +32,8 @@ app.get('/', function (req, res) {
 app.post(`/sendMessage`, async function (req, res) {
     let {name, email, message} = req.body
     transporter.sendMail({
-        from: 'HR',
-        to: 'anton.revta@gmail.com',
+        from: 'anton.revta@gmail.com',
+        to: 'nety_sovesty@mail.ru',
         subject: 'hr wants me',
         html: `<b>Привет!</b><div>${name}</div><div>${email}</div><div>${message}</div>`
     })
