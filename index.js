@@ -13,12 +13,15 @@ app.use(bodyParser.urlencoded({extended: false}))
 //parse app/json
 app.use(bodyParser.json())
 
+let smtp_login = process.env.SMTP_LOGIN || '---'
+let smtp_password = process.env.SMTP_PASSWORD || '---'
+
 /*настройка нодмейлера*/
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'anton.revta@gmail.com', // generated ethereal user
-        pass: 't8e3v8i4n6.1j5' // generated ethereal password
+        user: smtp_login, // generated ethereal user
+        pass: smtp_password, // generated ethereal password
     },
 });
 /*настраиваем роутер. если нам на корень сайта / придет get запрос, мы вернем hello world*/
@@ -35,7 +38,8 @@ app.post(`/sendMessage`, async function (req, res) {
         html: `<b>Привет!</b><div>${name}</div><div>${email}</div><div>${message}</div>`
     })
 })
+let port = process.env.PORT || 3010
 /*здесь мы стартуем наше app*/
-app.listen(3010, function () {
+app.listen(port, function () {
     console.log('Example app listening on port 3010')
 })
